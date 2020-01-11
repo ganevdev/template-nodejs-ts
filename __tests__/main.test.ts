@@ -1,4 +1,4 @@
-import { Delays, greeter } from './main';
+import { Delays, greeter } from '../src/main';
 
 describe('greeter function', () => {
   // Read more about fake timers
@@ -6,11 +6,11 @@ describe('greeter function', () => {
   jest.useFakeTimers();
 
   const name = 'John';
-  let hello;
+  let hello: string;
 
   // Act before assertions
   beforeAll(async () => {
-    const p = greeter(name);
+    const p: Promise<string> = greeter(name);
     jest.runOnlyPendingTimers();
     hello = await p;
   });
